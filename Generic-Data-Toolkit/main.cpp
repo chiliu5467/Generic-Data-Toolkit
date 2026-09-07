@@ -1,6 +1,13 @@
 ﻿#include <iostream>
 
 #include "GenericAlgorithms.h"
+#include "GenericBox.h"
+
+struct Task
+{
+    int id;
+    std::string name;
+};
 
 void TestGenericAlgorithms()
 {
@@ -43,9 +50,53 @@ void TestGenericAlgorithms()
     std::cout << "==================================" << std::endl;
 }
 
+void TestGenericBox()
+{
+    std::cout << "=== Testing Generic Box ===" << std::endl;
+    // 1. Testing GenericBox with int
+    {
+        GenericBox<int> intBox(42);
+        std::cout << "[GenericBox<int>] Get Value: " << intBox.Get()
+            << " (Expected: 42)" << std::endl;
+
+        intBox.Set(50);
+        std::cout << "[GenericBox<int>] Set Value: " << intBox.Get()
+            << " (Expected: 50)" << std::endl;
+    }
+    // 2. Testing GenericBox with string
+    {
+        GenericBox<std::string> strBox("Hello, World!");
+        std::cout << "[GenericBox<string>] Value: " << strBox.Get()
+            << " (Expected: Hello, World!)" << std::endl;
+
+        strBox.Set("Goodbye");
+        std::cout << "[GenericBox<string>] Value: " << strBox.Get()
+            << " (Expected: Goodbye)" << std::endl;
+    }
+
+    //3. Testing GenericBox with custom struct Task
+    {
+        Task task{ 1, "Complete Assignment" };
+        GenericBox<Task> taskBox(task);
+        Task retrievedTask = taskBox.Get();
+        std::cout << "[GenericBox<Task>] Task ID: " << retrievedTask.id
+            << ", Name: " << retrievedTask.name
+            << " (Expected: ID=1, Name=Complete Assignment)" << std::endl;
+        
+        Task newTask{ 2, "Review Code" };
+        taskBox.Set(newTask);
+        retrievedTask = taskBox.Get();
+        std::cout << "[GenericBox<Task>] Task ID: " << retrievedTask.id
+            << ", Name: " << retrievedTask.name
+            << " (Expected: ID=2, Name=Review Code)" << std::endl;
+	}
+	std::cout << "==============================" << std::endl;
+}
+
 int main()
 {
     TestGenericAlgorithms();
+    TestGenericBox();
 
     return 0;
 }
