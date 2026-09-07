@@ -6,7 +6,7 @@ void TestGenericAlgorithms()
 {
     std::cout << "=== Testing Generic Algorithms ===" << std::endl;
 
-    // 1. 測試 Contains (int)
+    // 1. Testing Contains (int)
     {
         std::vector<int> numbers{ 1, 2, 3, 4 };
         bool result = Contains(numbers, 3);
@@ -15,7 +15,7 @@ void TestGenericAlgorithms()
             << " (Expected: true)" << std::endl;
     }
 
-    // 2. 測試 Max
+    // 2. Testing Max
     {
         double maxVal = Max<double>(3, 4.5);
         std::cout << "[Max<double>] Max(3, 4.5) -> Result: "
@@ -23,7 +23,15 @@ void TestGenericAlgorithms()
             << " (Expected: 4.5)" << std::endl;
     }
 
-    // 3. 測試 Contains (string)
+    // 3. Testing Min
+    {
+        double minVal = Min<double>(3, 4.5);
+        std::cout << "[Min<double>] Min(3, 4.5) -> Result: "
+            << minVal
+            << " (Expected: 3)" << std::endl;
+    }
+
+    // 4. Testing Contains (string)
     {
         std::vector<std::string> names{ "Alice", "Bob", "Charlie" };
         bool result = Contains<std::string>(names, "Alice");
