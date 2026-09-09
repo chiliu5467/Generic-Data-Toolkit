@@ -11,3 +11,5 @@ public:
 private:
     T value_;
 };
+
+GenericBox(const char*)->GenericBox<std::string>;
