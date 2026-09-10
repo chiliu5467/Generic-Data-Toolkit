@@ -107,10 +107,24 @@ void TestGenericBox()
 	std::cout << "==============================" << std::endl;
 }
 
+void TestMultipleTemplateTypes()
+{
+    std::cout << "=== Testing Multiple Template Types ===" << std::endl;
+    std::cout << MaxValue(10, 20) << std::endl;
+    std::cout << MaxValue(3.5, 2) << std::endl;
+
+    auto result = MaxValue(10, 20.5);
+    std::cout << typeid(result).name() << std::endl;
+
+    std::cout << typeid(MaxCommon(3.5, 20)).name() << std::endl;
+    std::cout << "==============================" << std::endl;
+}
+
 int main()
 {
     TestGenericAlgorithms();
     TestGenericBox();
+    TestMultipleTemplateTypes();
 
     return 0;
 }
