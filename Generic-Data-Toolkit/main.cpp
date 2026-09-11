@@ -92,19 +92,22 @@ void TestGenericBox()
             << " (Expected: ID=2, Name=Review Code)" << std::endl;
 	}
 
-    //4. Testing CTAD
-    {
-        GenericBox<int> box1(42); // explicit
-        GenericBox box2(42);      // deduction
-        std::cout << "box1: " << typeid(box1).name() << '\n';
-        std::cout << "box2: " << typeid(box2).name() << '\n';
-
-        GenericBox stringBox1("Hello");
-        GenericBox stringBox2(std::string{ "Hello" });
-        std::cout << "stringBox1: " << typeid(stringBox1).name() << '\n';
-        std::cout << "stringBox2: " << typeid(stringBox2).name() << '\n';
-    }
 	std::cout << "==============================" << std::endl;
+}
+
+void TestingCTAD()
+{
+    std::cout << "=== Testing CTAD ===" << std::endl;
+
+    GenericBox<int> box1(42); // explicit
+    GenericBox box2(42);      // deduction
+    std::cout << "box1: " << typeid(box1).name() << '\n';
+    std::cout << "box2: " << typeid(box2).name() << '\n';
+
+    GenericBox stringBox(std::string{ "Hello" });
+    std::cout << "stringBox2: " << typeid(stringBox).name() << '\n';
+
+    std::cout << "==============================" << std::endl;
 }
 
 void TestMultipleTemplateTypes()
@@ -124,6 +127,7 @@ int main()
 {
     TestGenericAlgorithms();
     TestGenericBox();
+    TestingCTAD();
     TestMultipleTemplateTypes();
 
     return 0;
