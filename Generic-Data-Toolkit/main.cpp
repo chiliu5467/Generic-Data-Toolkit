@@ -1,5 +1,7 @@
 ﻿#include <iostream>
+#include <string>
 #include <typeinfo>
+#include <vector>
 
 #include "GenericAlgorithms.h"
 #include "GenericBox.h"
@@ -105,7 +107,7 @@ void TestingCTAD()
     std::cout << "box2: " << typeid(box2).name() << '\n';
 
     GenericBox stringBox(std::string{ "Hello" });
-    std::cout << "stringBox2: " << typeid(stringBox).name() << '\n';
+    std::cout << "stringBox: " << typeid(stringBox).name() << '\n';
 
     std::cout << "==============================" << std::endl;
 }
